@@ -1,0 +1,13 @@
+A Javascript Error occured:
+
+Log Message: <%= @log_entry.message %>
+URL        : <%= @log_entry.url %>
+Line:      : <%= @log_entry.line %>
+User Agent : <%= @log_entry.user_agent %>
+
+Backtrace  :
+
+<%= @log_entry.backtrace %>
+
+The error occurred at: <%= @log_entry.created_at %>
+

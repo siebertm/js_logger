@@ -1,6 +1,9 @@
 class JsLogger::LoggingController < ApplicationController
   def create
-    JsLogger::LogEntry.create(log_params)
+    log_entry = JsLogger::LogEntry.new(log_params)
+    log_entry.save
+    JsLogger::Mailer.deliver_new_log_entry(log_entry)
+
     head :ok
   end
 
