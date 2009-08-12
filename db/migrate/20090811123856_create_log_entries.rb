@@ -1,6 +1,6 @@
 class CreateLogEntries < ActiveRecord::Migration
   def self.up
-    create_table :log_entries do |t|
+    create_table :js_logger_log_entries do |t|
       t.string :log_hash
       t.string :message
       t.string :line
@@ -13,6 +13,6 @@ class CreateLogEntries < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :log_entries
+    drop_table :js_logger_log_entries
   end
 end

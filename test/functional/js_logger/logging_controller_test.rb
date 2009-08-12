@@ -1,8 +1,10 @@
 require 'test_helper'
 
-class LoggingControllerTest < ActionController::TestCase
+class JsLogger::LoggingControllerTest < ActionController::TestCase
+  tests JsLogger::LoggingController
+
   test "/js/logger should route to LoggingController#create" do
-    assert_recognizes({:controller => 'logging', :action => 'create'}, '/js/logger')
+    assert_recognizes({:controller => 'js_logger/logging', :action => 'create'}, '/js/logger')
   end
 
 
@@ -11,7 +13,7 @@ class LoggingControllerTest < ActionController::TestCase
   end
 
   test "should create a LogEntry object with the given params" do
-    LogEntry.expects(:create).with(valid_params).once.returns(true)
+    JsLogger::LogEntry.expects(:create).with(valid_params).once.returns(true)
     get :create, valid_params
   end
 

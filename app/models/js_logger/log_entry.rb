@@ -1,6 +1,8 @@
 require "digest/sha1"
 
-class LogEntry < ActiveRecord::Base
+class JsLogger::LogEntry < ActiveRecord::Base
+  set_table_name :js_logger_log_entries
+
   validates_presence_of :message
 
   before_save :generate_log_hash

@@ -1,6 +1,6 @@
-class LoggingController < ApplicationController
+class JsLogger::LoggingController < ApplicationController
   def create
-    LogEntry.create(log_params)
+    JsLogger::LogEntry.create(log_params)
     head :ok
   end
 

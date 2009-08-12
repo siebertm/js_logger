@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20090811123856) do
 
-  create_table "log_entries", :force => true do |t|
+  create_table "js_logger_log_entries", :force => true do |t|
     t.string   "log_hash"
     t.string   "message"
     t.string   "line"
