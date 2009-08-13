@@ -1,5 +1,6 @@
 class JsLogger::Mailer < ActionMailer::Base
   cattr_accessor :mail_to
+  cattr_accessor :filter_messages
 
   def new_log_entry(log_entry)
     subject    "JSLogger Error \"#{log_entry.message}\" (#{log_entry.log_hash})"
