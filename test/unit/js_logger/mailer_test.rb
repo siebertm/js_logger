@@ -7,12 +7,13 @@ class JsLogger::MailerTest < ActionMailer::TestCase
       :message => "something happened",
       :line => "20",
       :url => "http://google.com",
-      :user_agent => "Ruby"
+      :user_agent => "Ruby",
+      :backtrace => "foo.js:12\nbar.js:1"
     )
 
     JsLogger::Mailer.mail_to = "me@samedi.de"
 
-    @expected.subject = 'JSLogger Error "something happened" (d32007f085be4ade4ed4660f6ce05880daacd7de)'
+    @expected.subject = 'JSLogger Error "something happened"'
     @expected.from    = "jslogger@samedi.de"
     @expected.to      = "me@samedi.de"
     @expected.body    = read_fixture('new_log_entry')

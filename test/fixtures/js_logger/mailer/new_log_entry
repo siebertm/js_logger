@@ -7,7 +7,8 @@ User Agent : Ruby
 
 Backtrace  :
 
-
+foo.js:12
+bar.js:1
 
 The error occurred at: 2009-08-10 08:00:00 UTC
 
