@@ -25,6 +25,20 @@ class JsLogger::LoggingControllerTest < ActionController::TestCase
   end
 
 
+  test "should send an email when the message didnt matche any of JsLogger::Mailer.filter_messages" do
+    begin
+      JsLogger::Mailer.filter_messages = [
+        /nothing happened/,
+        /bar/
+      ]
+
+      JsLogger::Mailer.expects(:deliver_new_log_entry).once
+      get :create, valid_params
+    ensure
+      JsLogger::Mailer.filter_messages = []
+    end
+  end
+
   test "should not send an email when the message matches one of JsLogger::Mailer.filter_messages" do
     begin
       JsLogger::Mailer.filter_messages = [
