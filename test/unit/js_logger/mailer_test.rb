@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../../test_helper'
 
 class JsLogger::MailerTest < ActionMailer::TestCase
   test "new_log_entry" do
@@ -8,7 +8,8 @@ class JsLogger::MailerTest < ActionMailer::TestCase
       :line => "20",
       :url => "http://google.com",
       :user_agent => "Ruby",
-      :backtrace => "foo.js:12\nbar.js:1"
+      :backtrace => "foo.js:12\nbar.js:1",
+      :additional_data => "foo"
     )
 
     JsLogger::Mailer.mail_to = "me@samedi.de"

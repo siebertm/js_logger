@@ -7,6 +7,8 @@ class JsLogger::LogEntry < ActiveRecord::Base
 
   before_save :generate_log_hash
 
+  attr_accessor :additional_data
+
   protected
 
   def generate_log_hash

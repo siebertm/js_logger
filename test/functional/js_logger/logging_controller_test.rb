@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../../test_helper'
 
 class JsLogger::LoggingControllerTest < ActionController::TestCase
   tests JsLogger::LoggingController
@@ -22,6 +22,19 @@ class JsLogger::LoggingControllerTest < ActionController::TestCase
   test "should send an email with the log message" do
     JsLogger::Mailer.expects(:deliver_new_log_entry)
     get :create, valid_params
+  end
+
+  test "should add additional data when configured" do
+    begin
+      additional_data_proc = proc do |controller|
+      end
+      JsLogger::Mailer.additional_data = additional_data_proc
+
+      additional_data_proc.expects(:call).once
+      get :create, valid_params
+    ensure
+      JsLogger::Mailer.additional_data = nil
+    end
   end
 
 

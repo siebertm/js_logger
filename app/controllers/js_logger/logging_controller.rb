@@ -21,12 +21,18 @@ class JsLogger::LoggingController < ApplicationController
     JsLogger::Mailer.filter_messages || []
   end
 
+  def additional_data_proc
+    JsLogger::Mailer.additional_data || proc {}
+  end
+
 
   def log_params
-    %w(message line url user_agent backtrace).inject({}) do |hsh, key|
+    base = %w(message line url user_agent backtrace).inject({}) do |hsh, key|
       val = params[key]
       hsh[key.to_sym] = val if val.present?
       hsh
     end
+
+    base.merge({:additional_data => additional_data_proc.call(self)})
   end
 end

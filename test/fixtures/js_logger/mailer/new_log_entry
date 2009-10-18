@@ -4,6 +4,7 @@ Log Message: something happened
 URL        : http://google.com
 Line:      : 20
 User Agent : Ruby
+Data       : "foo"
 
 Backtrace  :
 
